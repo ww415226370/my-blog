@@ -1,0 +1,46 @@
+{% extends 'template/layout.html' %}
+
+{% block index %}
+<div style="border-bottom: 1px solid black;">
+    <h3>{{content.title}}</h3>
+    作者：<span>{{content.user.username}}</span>-
+    时间：<span>{{content.addTime|date('Y-m-d H:m:s', -8*60)}}</span>-
+    阅读：<span>{{content.views}}</span>-
+    评论：<span>10</span>
+    <p>{{content.description}}</p>
+    <p>{{content.content}}</p>
+</div>
+<div>
+    <div style="margin: 10px 0;">
+        <h4 style="display: inline;">评论</h4>
+        <span style="float: right;">一共
+            <span id="comments-len">0</span>
+        条评论</span>
+    </div>
+    {% if userInfo._id %}
+    <div class="input-group" style="width: 100%;margin-bottom: 30px;">
+        <textarea type="text" style="width: 100%;min-height: 74px;" rows="3" class="form-control" name="comment" id="comment" placeholder="请输入评论内容"></textarea>
+        <span class="input-group-addon" style="width: 54px;cursor: pointer;" id="comment-btn">发表</span>
+    </div>
+    {% else %}
+    <div style="text-align: center;color: red;line-height: 32px;">请先登录再评论</div>
+    {% endif %}
+    <ol id="comment-list">
+    </ol>
+    <ul class="pager" id="comment-pages">
+        <li class="previous" style="width: 90px;">
+            <a href="javascript:void(0)">
+                <span aria-hidden="true">&larr;</span> 上一页
+            </a>
+        </li>
+        <li style="line-height: 32px;width: calc(100% - 180px);" class="message-pages">
+        </li>
+        <li class="next" style="float: right;width: 90px;">
+            <a href="javascript:void(0)">
+                下一页 <span aria-hidden="true">&rarr;</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<script src="/public/js/comment.js"></script>
+{% endblock %}

@@ -1,0 +1,107 @@
+body,html {
+    width: 100%;
+    min-width: 1024px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+ol li, ul li {
+    list-style: none;
+    float: left;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.nav {
+    width: 100%;
+    height: 200px;
+    border-bottom: 1px solid black;
+}
+
+.backgroung-img {
+    height: 160px;
+}
+
+.active {
+    color: blue;
+}
+
+.nav ol {
+    height: 40px;
+    padding: 0;
+    margin: 0 0 0 50%;
+    line-height: 40px;
+    float: left;
+    overflow: hidden;
+    transform: translateX(-50%);
+}
+
+.nav ol li {
+    padding: 0 10px;
+}
+
+.content {
+    min-height: calc(100% - 240px);
+    padding: 20px 100px 20px;
+    overflow: hidden;
+}
+
+.left {
+    width: calc(100% - 300px);
+    float: left;
+}
+
+.left-content {
+    padding: 0px 50px;
+    overflow: hidden;
+}
+
+.left-content ol {
+    margin: 0;
+    overflow: hidden;
+    padding-left: 0;
+}
+
+.left-content ol li {
+    border: 1px solid black;
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.right {
+    width: 260px;
+    height: 100%;
+    float: right;
+    border: 1px solid black;
+}
+
+.right .title {
+    border-bottom: 1px solid black;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.right label {
+    padding-bottom: 10px;
+    display: block;
+    overflow: hidden;
+    text-align: right;
+}
+
+.right label input {
+    float: right;
+    width: 180px;
+}
+
+.login, .register, .userInfo {
+    padding: 20px 10px;
+}
+
+.register {
+    display: none;
+}

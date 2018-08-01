@@ -1,0 +1,20 @@
+{% extends 'template/layout.html' %}
+
+{% block index %}
+<ol>
+    {% for content in contents %}
+    <li>
+        <h3>{{content.title}}</h3>
+        作者：<span>{{content.user.username}}</span>-
+        时间：<span>{{content.addTime|date('Y-m-d H:m:s', -8*60)}}</span>-
+        阅读：<span>{{content.views}}</span>-
+        评论：<span>{{content.comments.length}}</span>
+        <p>{{content.description}}</p>
+        <a href="/view?id={{content.id}}">阅读全文</a>
+    </li>
+    {% endfor %}
+</ol>
+<div>
+    {% include 'template/page.html' %}
+</div>
+{% endblock %}

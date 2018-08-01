@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/public/main.css">
+    <link rel="stylesheet" href="/public/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/bootstrap-3.3.7/css/bootstrap-theme.min.css">
+    <script src="/public/js/jquery-1.12.4.min.js"></script>
+    <script src="/public/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="/public/js/index.js"></script>
+</head>
+<body>
+    <div class="nav">
+        <div class="backgroung-img">
+        </div>
+        <ol>
+            {% if category === '' %}
+                <li><a href="/" class="active">首页</a></li>
+                {% for cate in categories %}
+                <li><a href="/?category={{cate.id}}">{{cate.name}}</a></li>
+                {% endfor %}
+            {% else %}
+                <li><a href="/">首页</a></li>
+                {% for cate in categories %}
+                    {% if category == cate.id%}
+                        <li><a href="/?category={{cate.id}}" class="active">{{cate.name}}</a></li>
+                    {% else %}
+                        <li><a href="/?category={{cate.id}}">{{cate.name}}</a></li>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </ol>
+    </div>
+    <div class="content">
+        <div class="left">
+            <div class="left-content">
+                {% block index %}
+                {% endblock %}
+            </div>
+        </div>
+        <div class="right">
+            {% if !userInfo._id %}
+            <div class="login" id="login">
+                <div class="title">登录</div>
+                <form action="">
+                    <label>用户名：
+                        <input name="username" type="text" />
+                    </label>
+                    <label>密码：
+                        <input name="password" type="text" />
+                    </label>
+                </form>
+                <div class="btnBox" style="margin-left: 90px;">
+                    <input type="button" value="登陆" />
+                    <input type="button" value="注册" />
+                </div>
+                <p id="login-results" style="text-align: center;"></p>
+            </div>
+            <div class="register" id="register">
+                <div class="title">注册</div>
+                <form action="">
+                    <label>用户名：
+                        <input name="username" type="text" />
+                    </label>
+                    <label>密码：
+                        <input name="password" type="text" />
+                    </label>
+                </form>
+                <div class="btnBox" style="margin-left: 90px;">
+                    <input type="button" value="确定" />
+                    <input type="button" value="取消" />
+                </div>
+                <p id="register-results" style="text-align: center;"></p>
+            </div>
+            {% else %}
+            <div class="userInfo" id="userInfo">
+                <p>当前用户为<span class="username">{{userInfo.username}}</span><a href="javascript:void(0);" id="logout" style="margin-left: 10px;">退出</a></p>
+                {% if userInfo.isAdmin %}
+                    <p><a href="/admin">点击进入管理界面</a></p>
+                {% else %}
+                    <p>你好，欢迎光临我的博客！</p>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
